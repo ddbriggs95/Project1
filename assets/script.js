@@ -1,14 +1,34 @@
-//create search bar element
-var searchBar = document.getElementsByClassName(".form-control");
+//create search bar input element variable
+var searchInput = document.getElementById("inputSearch");
+console.log(searchInput);
+searchInput.textContent= searchInput;
 
-//variable for getting value user types in search
-var input = document.querySelector('input[type="search"]');
+//create variable for search button
+var searchForm = document.getElementById("searchForm");
+//console.log(searchInput);
 
-input.addEventListener("click", function(event) {
-    console.log('');
+searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log(searchInput.value);
+
+    var name = searchInput.value;
+    $.ajax({
+        method: 'GET',
+        url: 'https://api.api-ninjas.com/v1/dogs?name=' + name,
+        headers: { 'X-Api-Key': 'mqKr1tVSEBPOaMBbzLeEEw==2NIz37K5FR2fO4sE'},
+        contentType: 'application/json',
+        success: function(result) {
+            console.log(result);
+        },
+        error: function ajaxError(jqXHR) {
+            console.error('Error: ', jqXHR.responseText);
+        }
+    });
+
+
+    
 });
 
-var requestUrl = 'https://api.api-ninjas.com/v1/dogs?name=';
 
 
 
@@ -19,3 +39,4 @@ var requestUrl = 'https://api.api-ninjas.com/v1/dogs?name=';
 // })
 // .then(function)
 
+//fetch call to connect to api
