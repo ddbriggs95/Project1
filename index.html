@@ -27,8 +27,16 @@
   </head>
   <body>
 
-  <!-- Navbar begins-->
-  <nav class="navbar bg-body-tertiary">
+ 
+  <div class="header">
+    <div class="header-content">
+      <h1>TinDawg</h1>
+
+
+    </div>
+  </div>
+   <!-- Navbar begins-->
+   <nav class="navbar bg-body-tertiary">
     <div class="container-fluid">
       <form class="d-flex" role="search" id="searchForm">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="inputSearch" />
@@ -44,35 +52,14 @@
        <div class="p-3">Dog info</div>
       </div>
       <div class="col">
-        <div class="p-3">Dog image</div>
+        <div class="p-3">Dog image<div class="item item-2" id="img-container"></div></div>
+        
       </div>
     </div>
   </div>
-    <div class="header">
-      <div class="header-content">
-        <h1>TinDawg</h1>
-
-
-      </div>
-    </div>
-    <!-- Navbar begins-->
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <form class="d-flex" role="search" id="searchForm">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            id="inputSearch"
-          />
-          <button class="btn btn-outline-success" type="submit" id="searchBtn">
-            Search
-          </button>
-        </form>
-      </div>
-    </nav>
-    <!-- Navbar ends -->
+   
+    
+    
     <!-- dog info section -->
     <div class="container" id="doginfo"></div>
     <div class="Container">
