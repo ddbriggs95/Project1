@@ -5,6 +5,30 @@
 }
 body{
     background: #fcfcfc;
+
+}
+.header{
+  width: 100%;
+  height: 80px;
+  display: block;
+  background-color: #000;
+  font-family: "Open Sans";
+}
+.header-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+
+}
+.header-content h1{
+  font-size: 3.5rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+    color: #fcfcfc;
+    vertical-align: middle;
 }
 footer{
     position: absolute;
