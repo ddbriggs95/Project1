@@ -124,3 +124,10 @@ footer{
     width: 100%;
   }
 }
+
+.chicken {
+  background-color: orange;
+  height: 200px;
+  width: 200px;
+  
+}
