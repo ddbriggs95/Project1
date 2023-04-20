@@ -103,6 +103,24 @@ footer {
   font-weight: 200;
 }
 
+/* for star tating begins */
+
+.star-rating {
+  font-size: 20px;
+  color: #99989b;
+  display: flex;
+  justify-content: end;
+}
+
+.star-rating .fa-star {
+  margin-right: 2px;
+}
+
+.star-rating .fa-star.checked {
+  color: #f7d42a;
+}
+/* for star rating ends */
+
 /* .header {
   background-color: #F1F1F1;
   text-align: center;
