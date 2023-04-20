@@ -49,6 +49,7 @@ footer {
   width: 100vw;
   font-family: "Open Sans";
   padding-top: 20px;
+  margin-top: 20%;
   color: #fff;
 }
 .footer-content {
@@ -85,7 +86,7 @@ footer {
   color: #fff;
 }
 .socials a i {
-  font-s  ize: 1.1rem;
+  font-size: 1.1rem;
   transition: color 0.4s ease;
 }
 .socials a:hover i {
@@ -117,7 +118,7 @@ footer {
   display: flex;
   justify-content: end;
 }
-
+ 
 .star-rating .fa-star {
   margin-right: 2px;
 }
@@ -126,14 +127,23 @@ footer {
   color: #f7d42a;
 }
 /* for star rating ends */
-
-#info-container {
-  font-size: 30px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+/* for adoption-resource border */
+.black-border {
+  top: 200px;
+  right: 0px;
+  padding: 10px;
+  border: 3px solid #000;
+  margin: 10px;
+  flex-wrap: wrap;
+  flex-shrink: 10px;
 }
 
-
+@media screen and (device-width: 390px) {
+  .black-border {
+    margin-top: px;
+    
+  }
+}
 /* .header {
   background-color: #F1F1F1;
   text-align: center;
