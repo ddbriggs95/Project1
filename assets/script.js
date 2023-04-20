@@ -56,16 +56,20 @@ searchForm.addEventListener("submit", function (event) {
       starRating(infoListItem5, data[0].protectiveness); //for star rating
       // infoListItem5.textContent = "protectiveness: " + data[0].protectiveness;
 
-      var infoListItem6 = document.createElement("li");
-      infoListEl.append(infoListItem6);
-      infoListItem6.textContent =
-        "life expectancy: " + data[0].max_life_expectancy + "years";
-
+     
       var infoListItem7 = document.createElement("li");
       infoListItem7.innerHTML = "Drooling: " + createRating(5); //for star rating
       infoListEl.append(infoListItem7);
       starRating(infoListItem7, data[0].drooling); //for star rating
       // infoListItem7.textContent = "drooling : " + data[0].drooling;
+     
+     
+      var infoListItem6 = document.createElement("li");
+      infoListEl.append(infoListItem6);
+      infoListItem6.textContent =
+        "life expectancy: " + data[0].max_life_expectancy + "years";
+
+     
     },
     error: function ajaxError(jqXHR) {
       console.error("Error: ", jqXHR.responseText);
