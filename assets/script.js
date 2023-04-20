@@ -97,7 +97,7 @@ searchForm.addEventListener("submit", function (event) {
       console.error("Error: ", jqXHR.responseText);
     },
   });
-
+ 
   //   fetch for image
   var imgUrl = "https://dog.ceo/api/breed/" + name + "/images/random";
   fetch(imgUrl)
