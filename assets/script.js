@@ -13,6 +13,8 @@ searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   var name = searchInput.value;
+  //save user searches for breeds into local storage
+  localStorage.setItem('userInput', name);
   $.ajax({
     method: "GET",
     url: "https://api.api-ninjas.com/v1/dogs?name=" + name,
@@ -24,8 +26,7 @@ searchForm.addEventListener("submit", function (event) {
 
       var infoListEl = document.createElement("ul");
       infoContainer.append(infoListEl);
-      console.log(infoListEl);
-      console.log(data);
+
       //create new items for each dog info to display to container in a list
       var infoListItem1 = document.createElement("li");
       infoListEl.append(infoListItem1);
@@ -42,26 +43,26 @@ searchForm.addEventListener("submit", function (event) {
       infoListItem3.innerHTML = "Energy: " + createRating(5); //for star rating
       infoListEl.append(infoListItem3);
       starRating(infoListItem3, data[0].energy); //for star rating
-      // infoListItem3.textContent = "energy: " + data[0].energy;
+      
 
       var infoListItem4 = document.createElement("li");
       infoListItem4.innerHTML = "Shedding: " + createRating(5); //for star rating
       infoListEl.append(infoListItem4);
       starRating(infoListItem4, data[0].shedding); //for star rating
-      // infoListItem4.textContent = "shedding: " + data[0].shedding;
+      
 
       var infoListItem5 = document.createElement("li");
       infoListItem5.innerHTML = "Protectiveness: " + createRating(5); //for star rating
       infoListEl.append(infoListItem5);
       starRating(infoListItem5, data[0].protectiveness); //for star rating
-      // infoListItem5.textContent = "protectiveness: " + data[0].protectiveness;
+      
 
      
       var infoListItem7 = document.createElement("li");
       infoListItem7.innerHTML = "Drooling: " + createRating(5); //for star rating
       infoListEl.append(infoListItem7);
       starRating(infoListItem7, data[0].drooling); //for star rating
-      // infoListItem7.textContent = "drooling : " + data[0].drooling;
+      
      
      
       var infoListItem6 = document.createElement("li");
@@ -80,10 +81,11 @@ searchForm.addEventListener("submit", function (event) {
 // get img container
 var imgContainer = $("#img-container");
 
+//event listener for search button
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  console.log(searchInput.value);
-
+  
+//start fetch call for dog info
   var name = searchInput.value;
   $.ajax({
     method: "GET",
@@ -91,19 +93,18 @@ searchForm.addEventListener("submit", function (event) {
     headers: { "X-Api-Key": "mqKr1tVSEBPOaMBbzLeEEw==2NIz37K5FR2fO4sE" },
     contentType: "application/json",
     success: function (result) {
-      console.log(result);
+      
     },
     error: function ajaxError(jqXHR) {
       console.error("Error: ", jqXHR.responseText);
     },
   });
  
-  //   fetch for image
+  //start fetch call for dog image
   var imgUrl = "https://dog.ceo/api/breed/" + name + "/images/random";
   fetch(imgUrl)
     .then((res) => res.json())
     .then((data) => {
-      console.log("data :>> ", data);
       $(imgContainer).html(
         "<img src=" + data.message + ` alt=' ${name} picture' width=200 >`
       );
