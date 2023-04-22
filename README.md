@@ -41,12 +41,13 @@ TinDawg is a website that provides information about different breeds of dogs an
 
 - HTML
 - CSS
+- Bootstrap
 - JavaScript
+- jquery
+- jquery UI
 
 ---
 
 ## About the Developers
 
 TinDawg was developed by (Alphabetically ordered) **Alec Marierose**, **Dowling Briggs**, **Parisa Darkhal** and **Tyler Prouty** as a part of Georgia Tech FSF Bootcamp Projects. As dog lovers, they wanted to create a website that could help other dog lovers find information about different breeds and potentially adopt a new furry friend.
-
-

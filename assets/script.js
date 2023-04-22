@@ -9,12 +9,26 @@ var searchForm = document.getElementById("searchForm");
 //get info container
 var infoContainer = $("#info-container");
 
+// assign local storage
+localStorage.setItem("userInputArray", JSON.stringify([]));
+
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   var name = searchInput.value;
   //save user searches for breeds into local storage
-  localStorage.setItem('userInput', name);
+
+  let userInputArray = JSON.parse(localStorage.getItem("userInputArray"));
+  if (!userInputArray.includes(name)) {
+    userInputArray.push(name);
+  }
+  console.log("localStorage :>> ", localStorage);
+  localStorage.setItem("userInputArray", JSON.stringify(userInputArray));
+  createSelectableList(userInputArray);
+  $(function () {
+    $("#selectable").selectable();
+  });
+
   $.ajax({
     method: "GET",
     url: "https://api.api-ninjas.com/v1/dogs?name=" + name,
@@ -43,34 +57,26 @@ searchForm.addEventListener("submit", function (event) {
       infoListItem3.innerHTML = "Energy: " + createRating(5); //for star rating
       infoListEl.append(infoListItem3);
       starRating(infoListItem3, data[0].energy); //for star rating
-      
 
       var infoListItem4 = document.createElement("li");
       infoListItem4.innerHTML = "Shedding: " + createRating(5); //for star rating
       infoListEl.append(infoListItem4);
       starRating(infoListItem4, data[0].shedding); //for star rating
-      
 
       var infoListItem5 = document.createElement("li");
       infoListItem5.innerHTML = "Protectiveness: " + createRating(5); //for star rating
       infoListEl.append(infoListItem5);
       starRating(infoListItem5, data[0].protectiveness); //for star rating
-      
 
-     
       var infoListItem7 = document.createElement("li");
       infoListItem7.innerHTML = "Drooling: " + createRating(5); //for star rating
       infoListEl.append(infoListItem7);
       starRating(infoListItem7, data[0].drooling); //for star rating
-      
-     
-     
+
       var infoListItem6 = document.createElement("li");
       infoListEl.append(infoListItem6);
       infoListItem6.textContent =
         "life expectancy: " + data[0].max_life_expectancy + "years";
-
-     
     },
     error: function ajaxError(jqXHR) {
       console.error("Error: ", jqXHR.responseText);
@@ -84,22 +90,20 @@ var imgContainer = $("#img-container");
 //event listener for search button
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  
-//start fetch call for dog info
+
+  //start fetch call for dog info
   var name = searchInput.value;
   $.ajax({
     method: "GET",
     url: "https://api.api-ninjas.com/v1/dogs?name=" + name,
     headers: { "X-Api-Key": "mqKr1tVSEBPOaMBbzLeEEw==2NIz37K5FR2fO4sE" },
     contentType: "application/json",
-    success: function (result) {
-      
-    },
+    success: function (result) {},
     error: function ajaxError(jqXHR) {
       console.error("Error: ", jqXHR.responseText);
     },
   });
- 
+
   //start fetch call for dog image
   var imgUrl = "https://dog.ceo/api/breed/" + name + "/images/random";
   fetch(imgUrl)
@@ -134,3 +138,13 @@ function starRating(infoListItem, score) {
   }
 }
 // for star rating ends
+
+// for selectable
+function createSelectableList(userList) {
+  $("#selectable").html("");
+  for (let i = 0; i < userList.length; i++) {
+    $("#selectable").append(
+      `<li class="ui-widget-content d-block">${userList[i]}</li>`
+    );
+  }
+}
